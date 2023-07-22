@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css'
 import {DragDropContext, Droppable, Draggable} from "react-beautiful-dnd"
+import PdfSectionDesigner from './components/PdfSectionDesigner';
 
 
 const initialData = {
@@ -11,7 +12,11 @@ const initialData = {
 ],
  "cabezera" : [
   { id: "04", name: "Cabezera1" },
-]
+],
+  "footer" : [
+    { id: "05", name: "Footer1" },
+    { id: "06", name: "Footer2" },
+  ]
 }
 
 
@@ -64,51 +69,11 @@ function App() {
     <h1 className='text-lg font-bold'>Drag and Drop</h1>
     <DragDropContext 
       onDragEnd={handleDragDrop}>
-      {/* Aclaramos el id del droppable y el grupo */}
-      <Droppable droppableId='ROOT' type='group'>
-        {(provided) => (
-          // marca el dip dropeable
-          <div {...provided.droppableProps} ref={provided.innerRef} className='bg-cyan-600 p-2 rounded-2xl'>
-            {
-              items["ROOT"].map((item, index) => 
-                // marca los items dragrables
-                <Draggable draggableId={item.id} key={item.id} index={index} >
-                  {(provided) => (
-                    <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
-                      <h3 type="button" id={item.id} className='my-1 mx-32 border border-green-500 bg-green-500 text-white rounded-md hover:bg-green-600'>{item.name}</h3>
-                    </div>
-                  )}
-                </Draggable>)
-            }
-            {/* agrega un placeholder cuando arrastramos un elemento para que el contenedor no se reduzca de tamaño */}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
+      
+      <PdfSectionDesigner items={items} />
 
-      <br />
-
-      <Droppable droppableId='cabezera' type='group'>
-        {(provided) => (
-          // marca el dip dropeable
-          <div {...provided.droppableProps} ref={provided.innerRef} className='bg-cyan-600 p-2 rounded-2xl'>
-            {
-              items["cabezera"].map((item, index) => 
-                // marca los items dragrables
-                <Draggable draggableId={item.id} key={item.id} index={index} >
-                  {(provided) => (
-                    <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
-                      <h3 type="button" id={item.id} className='my-1 mx-32 border border-green-500 bg-green-500 text-white rounded-md hover:bg-green-600'>{item.name}</h3>
-                    </div>
-                  )}
-                </Draggable>)
-            }
-            {/* agrega un placeholder cuando arrastramos un elemento para que el contenedor no se reduzca de tamaño */}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
     </DragDropContext>
+
     </>
   )
 }
