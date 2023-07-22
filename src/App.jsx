@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css'
 import {DragDropContext, Droppable, Draggable} from "react-beautiful-dnd"
 import PdfSectionDesigner from './components/PdfSectionDesigner';
+import { v4 as uuidv4 } from 'uuid';
 
 
 const data = {
@@ -22,10 +23,24 @@ const data = {
   ],
 
 }
+// Generar los tres elementos iniciales con ids únicos usando uuidv4
+const generateInitialItems = () => {
+  return {
+    "ROOT" : [
+      { id: uuidv4(), name: "item1" },
+      { id: uuidv4(), name: "item2" },
+      { id: uuidv4(), name: "item3" },
+    ],
+    "cabezera" : [],
+    "body" : [],
+    "footer" : [],
+  };
+};
 
 
 function App() {
-  const [items, setItems] = useState(data)
+
+  const [items, setItems] = useState(generateInitialItems());
 
   const itemsWithoutROOT = Object.entries(items).filter(([key]) => key !== "ROOT");
   const itemsROOT =  Object.entries(items).filter(([key]) => key === "ROOT");
