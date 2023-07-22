@@ -3,7 +3,10 @@ import './App.css'
 import {DragDropContext} from "react-beautiful-dnd"
 import PdfSectionDesigner from './components/PdfSectionDesigner';
 import { v4 as uuidv4 } from 'uuid';
-import Swal from 'sweetalert2'
+
+import useCustomAlert from './hooks/useCustomAlert';
+
+
 
 
 
@@ -44,6 +47,9 @@ function App() {
 
   const [items, setItems] = useState(generateInitialItems());
 
+  const showAlert = useCustomAlert();
+
+
   const itemsWithoutROOT = Object.entries(items).filter(([key]) => key !== "ROOT");
   const itemsROOT =  Object.entries(items).filter(([key]) => key === "ROOT");
 
@@ -81,24 +87,11 @@ function App() {
 
       // Requisitos especiales
       if (sourceDroppableID!=="Header" && destinationDroppableID==="Header" && nameSelectedItem!=="image") 
-        return Swal.fire({
-          title: 'Casi pero no!',
-          text: 'Por orden suprema, solo se pueden agregar imagenes al header',
-          icon: 'warning',
-          confirmButtonText: 'Entendido',
-          timer: 5000,
-          timerProgressBar: 'true'
-        });
+        return showAlert("Por orden suprema, solo se pueden agregar imagenes al header.");
 
       if (sourceDroppableID!=="Footer" && destinationDroppableID==="Footer" && nameSelectedItem!=="text") 
-        return Swal.fire({
-          title: 'Casi pero no!',
-          text: 'Por orden suprema, solo se pueden agregar texto al footer',
-          icon: 'warning',
-          confirmButtonText: 'Entendido',
-          timer: 5000,
-          timerProgressBar: 'true'
-        });;
+      return showAlert("Por orden suprema, solo se pueden agregar textos al footer.");
+
 
 
       // Del Root a cualquiera
@@ -136,6 +129,7 @@ function App() {
 
     </DragDropContext>
 
+    
     </>
   )
 }
