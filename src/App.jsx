@@ -4,7 +4,7 @@ import {DragDropContext, Droppable, Draggable} from "react-beautiful-dnd"
 import PdfSectionDesigner from './components/PdfSectionDesigner';
 
 
-const initialData = {
+const data = {
   "ROOT" : [
   { id: "01", name: "item1" },
   { id: "02", name: "item2" },
@@ -13,15 +13,23 @@ const initialData = {
  "cabezera" : [
   { id: "04", name: "Cabezera1" },
 ],
+  "body" : [
+    { id: "05", name: "body1" },
+    { id: "06", name: "body2" },
+  ],
   "footer" : [
-    { id: "05", name: "Footer1" },
-    { id: "06", name: "Footer2" },
-  ]
+    { id: "07", name: "footer1" },
+  ],
+
 }
 
 
 function App() {
-  const [items, setItems] = useState(initialData)
+  const [items, setItems] = useState(data)
+
+  const itemsWithoutROOT = Object.entries(items).filter(([key]) => key !== "ROOT");
+  const itemsROOT =  Object.entries(items).filter(([key]) => key === "ROOT");
+
 
 
   const handleDragDrop = (results) => {
@@ -70,7 +78,12 @@ function App() {
     <DragDropContext 
       onDragEnd={handleDragDrop}>
       
-      <PdfSectionDesigner items={items} />
+      <div className='flex justify-center gap-7'>
+        <PdfSectionDesigner items={itemsWithoutROOT} className='basis-3/4'/>
+        <div >
+          <PdfSectionDesigner items={itemsROOT} className='basis-1/4 bg-cyan-600 p-2 rounded-2xl'/>
+        </div>
+      </div>
 
     </DragDropContext>
 

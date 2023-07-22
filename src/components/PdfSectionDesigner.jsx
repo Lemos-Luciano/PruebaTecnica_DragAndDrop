@@ -5,9 +5,11 @@ import { Droppable, Draggable} from "react-beautiful-dnd"
 const PdfSectionDesigner = (props) => {
 
   const { items } = props;
+
+  
   return (
-    <div>
-      {Object.entries(items).map(([key, value]) => (
+    <div className='flex flex-col gap-5'>
+      {items.map(([key, value]) => (
         <div key={key}>
           <h2 className='text-lg font-bold text-left'>{key}</h2>
           <Droppable droppableId={key} type='group'>
