@@ -9,7 +9,7 @@ const PdfSectionDesigner = (props) => {
 
   
   return (
-    <div className='flex flex-col gap-5'>
+    <div>
       {items.map(([key, value]) => (
         <div key={key}>
           <h2 className='text-lg font-bold text-left'>{key}</h2>
@@ -24,7 +24,7 @@ const PdfSectionDesigner = (props) => {
                   <Draggable draggableId={item.id} key={item.id} index={index} >
                     {(provided) => (
                       <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
-                        <h3 type="button" id={item.id} className='my-1 mx-32 border border-green-500 bg-green-500 text-white rounded-md hover:bg-green-600'>{item.name}</h3>
+                        <h3 type="button" id={item.id} className='mx-5 my-1 px-3 border border-green-500 bg-green-500 text-white rounded-md hover:bg-green-600'>{item.name}</h3>
                       </div>
                     )}
                   </Draggable>))
