@@ -15,6 +15,7 @@ const PdfSectionDesigner = (props) => {
             // marca el dip dropeable
             <div {...provided.droppableProps} ref={provided.innerRef} className='bg-cyan-600 p-2 rounded-2xl'>
               {
+                (value.length === 0) ? <p>Por favor, agregue algun elemento</p> : (
                 value.map((item, index) => 
                   // marca los items dragrables
                   <Draggable draggableId={item.id} key={item.id} index={index} >
@@ -23,7 +24,7 @@ const PdfSectionDesigner = (props) => {
                         <h3 type="button" id={item.id} className='my-1 mx-32 border border-green-500 bg-green-500 text-white rounded-md hover:bg-green-600'>{item.name}</h3>
                       </div>
                     )}
-                  </Draggable>)
+                  </Draggable>))
               }
               {/* agrega un placeholder cuando arrastramos un elemento para que el contenedor no se reduzca de tamaño */}
               {provided.placeholder}
