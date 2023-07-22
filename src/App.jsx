@@ -27,13 +27,13 @@ const data = {
 const generateInitialItems = () => {
   return {
     "ROOT" : [
-      { id: uuidv4(), name: "item1" },
-      { id: uuidv4(), name: "item2" },
-      { id: uuidv4(), name: "item3" },
+      { id: uuidv4(), name: "text" },
+      { id: uuidv4(), name: "image" },
+      { id: uuidv4(), name: "table" },
     ],
-    "cabezera" : [],
-    "body" : [],
-    "footer" : [],
+    "Header" : [],
+    "Body" : [],
+    "Footer" : [],
   };
 };
 
@@ -71,13 +71,21 @@ function App() {
       const sourceDroppableID = source.droppableId
       const destinationDroppableID = destination.droppableId
 
+      if (sourceDroppableID==="ROOT" && destinationDroppableID==="ROOT") return;
+      if (sourceDroppableID!=="ROOT" && destinationDroppableID==="ROOT") return;
 
-      // if (sourceDroppableID === destinationDroppableID) 
+      // Del Root a cualquiera
+      if (sourceDroppableID==="ROOT" && destinationDroppableID!=="ROOT") {
+        const newItem = { id: uuidv4(), name: reorderedStores[sourceDroppableID][sourceIndex].name }
+        console.log(newItem);
+        reorderedStores[destinationDroppableID].splice(destinationIndex, 0, newItem)
+        return reorderedStores
+      };
 
+      // EN CASO RESTANTE, De cualquiera menos root a cualquiera menos root
       // creamos un nuevo array con el item removido, indicamos que queremos quitar un elemento
       // ["item2", "item3"]
       const [removeItem] = reorderedStores[sourceDroppableID].splice(sourceIndex, 1);
-
       // Agrega en el index indicado el elemento elminidado. Se quita 0 y se agrega removeItem
       // ["item2", "item3", "item1"]
       reorderedStores[destinationDroppableID].splice(destinationIndex, 0, removeItem)
