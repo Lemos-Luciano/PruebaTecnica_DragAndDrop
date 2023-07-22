@@ -12,7 +12,6 @@ const useCustomAlert = () => (message) => {
         </div>
       </div>
     `,
-    icon: 'warning',
     confirmButtonText: 'Entendido',
     timer: 5000,
     timerProgressBar: 'true',
