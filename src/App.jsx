@@ -64,6 +64,7 @@ function App() {
     if (type === 'group') {
       // ["item1", "item2", "item3"]
       const reorderedStores = {...items};
+    
 
       const sourceIndex = source.index
       const destinationIndex = destination.index
@@ -71,13 +72,22 @@ function App() {
       const sourceDroppableID = source.droppableId
       const destinationDroppableID = destination.droppableId
 
+      const nameSelectedItem = reorderedStores[sourceDroppableID][sourceIndex].name
+
       if (sourceDroppableID==="ROOT" && destinationDroppableID==="ROOT") return;
       if (sourceDroppableID!=="ROOT" && destinationDroppableID==="ROOT") return;
 
+      // Requisitos especiales
+      if (sourceDroppableID!=="Header" && destinationDroppableID==="Header" && nameSelectedItem!=="image") 
+        return console.log("el header solo acepta imagenes!");
+
+      if (sourceDroppableID!=="Footer" && destinationDroppableID==="Footer" && nameSelectedItem!=="text") 
+        return console.log("el footer solo acepta texto!");
+
+
       // Del Root a cualquiera
       if (sourceDroppableID==="ROOT" && destinationDroppableID!=="ROOT") {
-        const newItem = { id: uuidv4(), name: reorderedStores[sourceDroppableID][sourceIndex].name }
-        console.log(newItem);
+        const newItem = { id: uuidv4(), name: nameSelectedItem }
         reorderedStores[destinationDroppableID].splice(destinationIndex, 0, newItem)
         return reorderedStores
       };
