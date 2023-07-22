@@ -71,6 +71,8 @@ function App() {
                   )}
                 </Draggable>)
             }
+            {/* agrega un placeholder cuando arrastramos un elemento para que el contenedor no se reduzca de tamaño */}
+            {provided.placeholder}
           </div>
         )}
       </Droppable>
