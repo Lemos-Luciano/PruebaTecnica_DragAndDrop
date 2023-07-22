@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import './App.css'
-import {DragDropContext, Droppable, Draggable} from "react-beautiful-dnd"
+import {DragDropContext} from "react-beautiful-dnd"
 import PdfSectionDesigner from './components/PdfSectionDesigner';
 import { v4 as uuidv4 } from 'uuid';
+import Swal from 'sweetalert2'
+
 
 
 const data = {
@@ -79,10 +81,24 @@ function App() {
 
       // Requisitos especiales
       if (sourceDroppableID!=="Header" && destinationDroppableID==="Header" && nameSelectedItem!=="image") 
-        return console.log("el header solo acepta imagenes!");
+        return Swal.fire({
+          title: 'Casi pero no!',
+          text: 'Por orden suprema, solo se pueden agregar imagenes al header',
+          icon: 'warning',
+          confirmButtonText: 'Entendido',
+          timer: 5000,
+          timerProgressBar: 'true'
+        });
 
       if (sourceDroppableID!=="Footer" && destinationDroppableID==="Footer" && nameSelectedItem!=="text") 
-        return console.log("el footer solo acepta texto!");
+        return Swal.fire({
+          title: 'Casi pero no!',
+          text: 'Por orden suprema, solo se pueden agregar texto al footer',
+          icon: 'warning',
+          confirmButtonText: 'Entendido',
+          timer: 5000,
+          timerProgressBar: 'true'
+        });;
 
 
       // Del Root a cualquiera
