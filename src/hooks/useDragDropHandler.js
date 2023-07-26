@@ -32,10 +32,10 @@ const useDragDropHandler = (initialItems) => {
       if (sourceDroppableID !== "ROOT" && destinationDroppableID === "ROOT") return;
 
       if (sourceDroppableID !== "Header" && destinationDroppableID === "Header" && nameSelectedItem !== "image")
-        return showAlert("Por orden suprema, solo se pueden agregar imagenes al header.");
+        return showAlert("Por suprema orden, solo se permiten agregar imágenes al Header.");
 
       if (sourceDroppableID !== "Footer" && destinationDroppableID === "Footer" && nameSelectedItem !== "text")
-        return showAlert("Por orden suprema, solo se pueden agregar textos al footer.");
+        return showAlert("Por suprema orden, solo se permiten agregar textos al Footer.");
 
       if (sourceDroppableID === "ROOT" && destinationDroppableID !== "ROOT") {
         const newItem = { id: uuidv4(), name: nameSelectedItem }

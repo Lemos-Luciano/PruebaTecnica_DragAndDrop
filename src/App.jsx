@@ -7,13 +7,16 @@ import Elements from './components/Elements';
 // Hooks
 import useDragDropHandler from './hooks/useDragDropHandler';
 
+
+
+
 // Generar los tres elementos iniciales con ids únicos usando uuidv4
 const generateInitialItems = () => {
   return {
     "ROOT" : [
-      { id: uuidv4(), name: "text" },
-      { id: uuidv4(), name: "image" },
-      { id: uuidv4(), name: "table" },
+      { id: uuidv4(), name: "text"},
+      { id: uuidv4(), name: "image"},
+      { id: uuidv4(), name: "table"},
     ],
     "Header" : [],
     "Body" : [],
