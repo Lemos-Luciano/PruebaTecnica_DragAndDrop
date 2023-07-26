@@ -13,7 +13,7 @@ const useCustomAlert = () => (message) => {
       </div>
     `,
     confirmButtonText: 'Entendido',
-    timer: 5000,
+    timer: 8000,
     timerProgressBar: 'true',
   });
 };

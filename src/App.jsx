@@ -3,6 +3,7 @@ import {DragDropContext} from "react-beautiful-dnd"
 import { v4 as uuidv4 } from 'uuid';
 // Components
 import PdfSectionDesigner from './components/PdfSectionDesigner';
+import Elements from './components/Elements';
 // Hooks
 import useDragDropHandler from './hooks/useDragDropHandler';
 
@@ -36,7 +37,7 @@ function App() {
             <PdfSectionDesigner items={itemsWithoutROOT} />
           </div>
           <div className='flex-auto w-32'>
-            <PdfSectionDesigner items={itemsROOT} />
+            <Elements items={itemsROOT} />
           </div>
         </div>
      </DragDropContext>
