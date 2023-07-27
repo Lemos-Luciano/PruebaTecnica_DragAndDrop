@@ -41,7 +41,7 @@ const useDragDropHandler = (initialItems) => {
         const newItem = { id: uuidv4(), name: nameSelectedItem }
         reorderedStores[destinationDroppableID].splice(destinationIndex, 0, newItem)
         return reorderedStores
-      };
+      }
 
       const [removeItem] = reorderedStores[sourceDroppableID].splice(sourceIndex, 1);
       reorderedStores[destinationDroppableID].splice(destinationIndex, 0, removeItem)

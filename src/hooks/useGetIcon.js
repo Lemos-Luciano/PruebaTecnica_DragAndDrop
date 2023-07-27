@@ -3,7 +3,7 @@ import { faAlignJustify } from '@fortawesome/free-solid-svg-icons'
 import { faTable } from '@fortawesome/free-solid-svg-icons'
 
 
-const useGetIcon =  (itemName) => {
+const useGetIcon = () => (itemName) => {
         if (itemName === 'text') {
           return faAlignJustify;
         } else if (itemName === 'table') {

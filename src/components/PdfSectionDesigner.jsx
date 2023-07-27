@@ -1,13 +1,9 @@
-import React from 'react'
-
-// Hooks
-import useGetIcon from '../hooks/useGetIcon';
-
-
 import { Droppable, Draggable} from "react-beautiful-dnd"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
+// Hooks
+import useGetIcon from '../hooks/useGetIcon';
 
 
 
@@ -17,17 +13,7 @@ const PdfSectionDesigner = (props) => {
 
   const { items } = props;
 
-  const getIcon = (itemName) => {
-    if (itemName === 'text') {
-      return faAlignJustify;
-    } else if (itemName === 'table') {
-      return faTable;
-    } else if (itemName === 'image') {
-      return faImage;
-    } else {
-      return null;
-    }
-  };
+  const getIcon = useGetIcon();
 
   
   return (
@@ -46,7 +32,7 @@ const PdfSectionDesigner = (props) => {
                   <Draggable draggableId={item.id} key={item.id} index={index} >
                     {(provided) => (
                       <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef} className='itemsContainerInside'>
-                        <FontAwesomeIcon icon={useGetIcon(item.name)} style={{color: "#3a6b88",}} className='fontAwesomeIcon' />
+                        <FontAwesomeIcon icon={getIcon(item.name)} style={{color: "#3a6b88",}} className='fontAwesomeIcon' />
                         <h3 type="button" id={item.id} className='textElement'>{item.name}</h3>
                       </div>
                     )}
