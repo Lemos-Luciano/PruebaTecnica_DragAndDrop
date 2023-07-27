@@ -1,9 +1,9 @@
-import Swal from 'sweetalert2';
-import gifImage from '../assets/giphy.gif';
+import Swal from 'sweetalert2'
+import gifImage from '../assets/giphy.gif'
 
 const useCustomAlert = () => (message) => {
-  Swal.fire({
-    html: `
+	Swal.fire({
+		html: `
       <div class="message-container">
         <img id="gifanimado" src=${gifImage} alt="GIF animado">
         <div>
@@ -12,10 +12,10 @@ const useCustomAlert = () => (message) => {
         </div>
       </div>
     `,
-    confirmButtonText: 'Entendido',
-    timer: 8000,
-    timerProgressBar: 'true',
-  });
-};
+		confirmButtonText: 'Entendido',
+		timer: 8000,
+		timerProgressBar: 'true',
+	})
+}
 
-export default useCustomAlert;
+export default useCustomAlert
