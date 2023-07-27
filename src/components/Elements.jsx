@@ -20,7 +20,7 @@ const Elements = (props) => {
 							<div
 								{...provided.droppableProps}
 								ref={provided.innerRef}
-								className='flex gap-5'
+								className='flex gap-5 max-lg:flex-col'
 							>
 								{value.length === 0 ? (
 									<p>Por favor, agregue algun elemento</p>
