@@ -11,8 +11,8 @@ const useDragDropHandler = (initialItems) => {
 		const { source, destination, type } = results
 		let reorderedStores = { ...items }
 
-		if (source.droppableId === 'ROOT' && !destination) return
-		if (source.droppableId !== 'ROOT' && !destination)
+		if (source.droppableId === 'Elements' && !destination) return
+		if (source.droppableId !== 'Elements' && !destination)
 			return reorderedStores[source.droppableId].splice(source.index, 1)
 
 		if (
@@ -31,9 +31,15 @@ const useDragDropHandler = (initialItems) => {
 			const nameSelectedItem =
 				reorderedStores[sourceDroppableID][sourceIndex].name
 
-			if (sourceDroppableID === 'ROOT' && destinationDroppableID === 'ROOT')
+			if (
+				sourceDroppableID === 'Elements' &&
+				destinationDroppableID === 'Elements'
+			)
 				return
-			if (sourceDroppableID !== 'ROOT' && destinationDroppableID === 'ROOT')
+			if (
+				sourceDroppableID !== 'Elements' &&
+				destinationDroppableID === 'Elements'
+			)
 				return
 
 			if (
@@ -54,7 +60,10 @@ const useDragDropHandler = (initialItems) => {
 					'Por suprema orden, solo se permiten agregar textos al Footer.',
 				)
 
-			if (sourceDroppableID === 'ROOT' && destinationDroppableID !== 'ROOT') {
+			if (
+				sourceDroppableID === 'Elements' &&
+				destinationDroppableID !== 'Elements'
+			) {
 				const newItem = { id: uuidv4(), name: nameSelectedItem }
 				reorderedStores[destinationDroppableID].splice(
 					destinationIndex,

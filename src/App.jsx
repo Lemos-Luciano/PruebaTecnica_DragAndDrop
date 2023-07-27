@@ -10,7 +10,7 @@ import useDragDropHandler from './hooks/useDragDropHandler'
 // Generar los tres elementos iniciales con ids únicos usando uuidv4
 const generateInitialItems = () => {
 	return {
-		ROOT: [
+		Elements: [
 			{ id: uuidv4(), name: 'text' },
 			{ id: uuidv4(), name: 'image' },
 			{ id: uuidv4(), name: 'table' },
@@ -24,10 +24,12 @@ const generateInitialItems = () => {
 function App() {
 	const { items, handleDragDrop } = useDragDropHandler(generateInitialItems())
 
-	const itemsWithoutROOT = Object.entries(items).filter(
-		([key]) => key !== 'ROOT',
+	const itemsWithoutElements = Object.entries(items).filter(
+		([key]) => key !== 'Elements',
 	)
-	const itemsROOT = Object.entries(items).filter(([key]) => key === 'ROOT')
+	const itemsElements = Object.entries(items).filter(
+		([key]) => key === 'Elements',
+	)
 
 	return (
 		<div className='flex flex-col'>
@@ -35,10 +37,10 @@ function App() {
 			<DragDropContext onDragEnd={handleDragDrop}>
 				<div className='flex gap-14 p-7 max-lg:flex-col max-lg:items-center'>
 					<div className='flex-auto w-64'>
-						<PdfSectionDesigner items={itemsWithoutROOT} />
+						<PdfSectionDesigner items={itemsWithoutElements} />
 					</div>
 					<div className='flex-auto w-32'>
-						<Elements items={itemsROOT} />
+						<Elements items={itemsElements} />
 					</div>
 				</div>
 			</DragDropContext>
