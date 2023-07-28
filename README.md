@@ -4,7 +4,7 @@
 
 # Editor de PDF Interactivo con React
 
-[URL del proyecto](https://lucianolemos-draganddrop.vercel.app/){:target="_blank"}
+[URL del proyecto](https://lucianolemos-draganddrop.vercel.app/)
 
 ![Vista previa](./public/preview.gif)
 
@@ -60,7 +60,7 @@ En resumen, este proyecto de Front-End se desarrolló con una arquitectura bien 
 
 <br>
 
-<a href="https://lucianolemos.vercel.app/" target="_blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/128x128.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `Instrucciones_Prueba_Tecnica` </a>
+<a href="https://github.com/Lemos-Luciano/PruebaTecnica_DragAndDrop/blob/main/Instrucciones_Prueba_Tecnica.pdf" target="_blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/128x128.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `Instrucciones_Prueba_Tecnica` </a>
 
 <br>
 
